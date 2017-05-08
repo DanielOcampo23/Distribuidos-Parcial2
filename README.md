@@ -110,24 +110,24 @@ En este docker-compose configuramos los servicios, osea las web que va a balance
 
 Después de mencionar las carpetas de las web en el docker-compose.yml, procedemos a crearlas y configurarlas con sus respectivos archivos:
   -Dockerfile
-  -web1.html
+  -index.html
 
 Para el Dockerfile lo configuraremos de esta manera:
 
 ``` 
 FROM httpd
 
-#Ubicacion de la web1
-ADD web1.html /usr/local/apache2/htdocs/web1.html
+#Ubicacion de la index
+ADD index.html /usr/local/apache2/htdocs/index.html
 ```                       
                
 En este archivo simplemente mencionamos donde se encuentra el html de la web1
 
-Para el web1.hmtl
+Para el index.hmtl
 
 Simplemente adentro de este archivo escribimos el nombre de la web para diferenciarlo de las demas algo como:
 ```
-web1
+Pagina web 1
 ``` 
 Después realizamos lo mismo con las demas web (web2 y web3) para poder tener las tres web requeridas para el balaceo
 
