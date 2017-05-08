@@ -21,13 +21,13 @@ Deberá realizar el aprovisionamiento de un ambiente compuesto por los siguiente
 
 ![Github Logo0](Imagenes/01_diagrama_despliegue.png)
 
-#Herramientas
+# Herramientas
  -Docker
  -Docker-compose
  -Nginx
  -html (para probar las páginas web)
  
-#Procedimiento
+# Procedimiento
 
 Primero configuramos el Dockerfile del nginx para su respectiva instalación, el cual va a ser la herramienta encargada de hacer el balaceo de las web, por eso tenemos que asegurarnos de su funcionamiento antes de configurar las web:
 
@@ -75,7 +75,7 @@ http {
 
 En este archivo configuramos cuales son las web que el ngnix balanceará y los puertos en los que va a escuchar el nginx.
 
-#Docker-compose.yml
+# Docker-compose.yml
 
 Después de configurar el dockerfile del nginx, pasamos a configurar el docker-compose.yml el cual es el encargado de montar toda las infraestructura mostrada en el diagrama de deployment anteriormente, este docker-compose debería quedar así con sus respectivas web:
 
@@ -106,7 +106,7 @@ services:
 
 En este docker-compose configuramos los servicios, osea las web que va a balancear el nginx con su respectivo puerto que expone cada web, después se configura el proxy (nginx) en el cual se le indica la carpeta en donde esta su respectivo Dockerfile y nginx.config que configuramos en anteriormente, después de esto se describe los puertos del nginx y después se lista las web que balaceará 
 
-#Configuración de las carpetas con sus archivos de las web
+# Configuración de las carpetas con sus archivos de las web
 
 Después de mencionar las carpetas de las web en el docker-compose.yml, procedemos a crearlas y configurarlas con sus respectivos archivos:
   -Dockerfile
@@ -131,7 +131,7 @@ web1
 ``` 
 Después realizamos lo mismo con las demas web (web2 y web3) para poder tener las tres web requeridas para el balaceo
 
-#Ejecución
+# Ejecución
 
 Finalmente después de haber configurado correctamente todos los archivos antes mencionados, procedemos a ejecutar el docker-compose el cual es el encargado de ejecutar toda la infraestructura como lo mencione anteriormente, para esto ejecutamos el siguiente comando:
 
@@ -139,7 +139,7 @@ Finalmente después de haber configurado correctamente todos los archivos antes 
 docker-compose up
 ```
     
-#Problematica
+# Problematica
 
 Durante la realización de este ejecicio se presentaron una serie de problemas que con el tiempo se fueron solucionando, algunas fueron:
 -Problema con los volumenes de Docker: primero tenia pensado abordar el problema con volumenes, pero después de presentar una serie de problemas con esto, investigé si de verdad eran necesario estos volumenes, y como era de esperarse no fue necesario utilizarlos, por lo que la solución de este problema no aborda volumenes.
