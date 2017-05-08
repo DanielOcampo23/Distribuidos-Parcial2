@@ -134,6 +134,10 @@ Pagina web 1
 ``` 
 Después realizamos lo mismo con las demas web (web2 y web3) para poder tener las tres web requeridas para el balaceo
 
+Las carpetas de la actividad con sus respectivos archivos deberia ser algo como:
+
+![Github Logo0](tree-parcial2.png)
+
 #  Ejecución
 
 Finalmente después de haber configurado correctamente todos los archivos antes mencionados, procedemos a ejecutar el docker-compose el cual es el encargado de ejecutar toda la infraestructura como lo mencione anteriormente, para esto ejecutamos el siguiente comando:
