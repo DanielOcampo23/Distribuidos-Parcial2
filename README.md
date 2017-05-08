@@ -26,8 +26,11 @@ Deberá realizar el aprovisionamiento de un ambiente compuesto por los siguiente
 # Herramientas
 
  -Docker
+ 
  -Docker-compose
+ 
  -Nginx
+ 
  -html (para probar las páginas web)
  
 # Procedimiento
