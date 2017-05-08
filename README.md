@@ -15,7 +15,7 @@ https://github.com/DanielOcampo23/Distribuidos-Parcial2
 
 -Diagnosticar y ejecutar de forma autónoma las acciones necesarias para lograr infraestructuras estables
 
--Integrar servicios ejecutandose en nodos distintos
+-Integrar servicios ejecutándose en nodos distintos
 
 # Descripción
 
@@ -35,7 +35,7 @@ Deberá realizar el aprovisionamiento de un ambiente compuesto por los siguiente
  
 # Procedimiento
 
-Primero configuramos el Dockerfile del nginx para su respectiva instalación, el cual va a ser la herramienta encargada de hacer el balaceo de las web, por eso tenemos que asegurarnos de su funcionamiento antes de configurar las web:
+Primero configuramos el Dockerfile del nginx para su respectiva instalación, el cual va a ser la herramienta encargada de hacer el balanceo de las web, por eso tenemos que asegurarnos de su funcionamiento antes de configurar las web:
 
 ```
 FROM nginx
@@ -55,7 +55,7 @@ CMD service nginx start
                                  
 ```
 
-En este Dockerfile se hace los respectivos pasos para poder garantizar su instalación, uno de los pasos importantes es remover el archivo de configuración que viene por defecto del ngnix y replazarlo por el nuevo que mostraré a continuación, el cual lo llamaremos nginx.conf:
+En este Dockerfile se hace los respectivos pasos para poder garantizar su instalación, uno de los pasos importantes es remover el archivo de configuración que viene por defecto del ngnix y remplazarlo por el nuevo que mostraré a continuación, el cual lo llamaremos nginx.conf:
 
 ```
 http {
@@ -132,11 +132,11 @@ En este archivo simplemente mencionamos donde se encuentra el html de la web1
 
 Para el index.hmtl
 
-Simplemente adentro de este archivo escribimos el nombre de la web para diferenciarlo de las demas algo como:
+Simplemente adentro de este archivo escribimos el nombre de la web para diferenciarlo de las demás algo como:
 ```
 Pagina web 1
 ``` 
-Después realizamos lo mismo con las demas web (web2 y web3) para poder tener las tres web requeridas para el balaceo
+Después realizamos lo mismo con las demás web (web2 y web3) para poder tener las tres web requeridas para el balaceo
 
 Las carpetas de la actividad con sus respectivos archivos deberia ser algo como:
 
@@ -156,6 +156,6 @@ Prueba de funcionamiento:
 
 #  Problematica
 
-Durante la realización de este ejecicio se presentaron una serie de problemas que con el tiempo se fueron solucionando, algunas fueron:
+Durante la realización de este ejercicio se presentaron una serie de problemas que con el tiempo se fueron solucionando, algunas fueron:
 
--Problema con los volumenes de Docker: primero tenia pensado abordar el problema con volumenes, pero después de presentar una serie de problemas con esto, investigé si de verdad eran necesario estos volumenes, y como era de esperarse no fue necesario utilizarlos, por lo que la solución de este problema no aborda volumenes.
+-Problema con los volúmenes de Docker: primero tenia pensado abordar el problema con volúmenes, pero después de presentar una serie de problemas con esto, investigué si de verdad eran necesario estos volúmenes, y como era de esperarse no fue necesario utilizarlos, por lo que la solución de este problema no aborda volúmenes.
