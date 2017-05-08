@@ -24,6 +24,7 @@ Deberá realizar el aprovisionamiento de un ambiente compuesto por los siguiente
 ![Github Logo0](Imagenes/01_diagrama_despliegue.png)
 
 # Herramientas
+
  -Docker
  -Docker-compose
  -Nginx
