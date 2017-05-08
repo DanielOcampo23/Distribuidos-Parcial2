@@ -138,7 +138,11 @@ Finalmente después de haber configurado correctamente todos los archivos antes 
 ```
 docker-compose up
 ```
-    
+
+Prueba de funcionamiento: 
+
+![Github Logo0](Imagenes/parcial2.gif)
+
 # Problematica
 
 Durante la realización de este ejecicio se presentaron una serie de problemas que con el tiempo se fueron solucionando, algunas fueron:
