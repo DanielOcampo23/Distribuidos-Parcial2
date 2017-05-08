@@ -12,7 +12,9 @@ https://github.com/DanielOcampo23/Distribuidos-Parcial2
 # Objetivos
 
 -Realizar de forma autónoma el aprovisionamiento automático de infraestructura
+
 -Diagnosticar y ejecutar de forma autónoma las acciones necesarias para lograr infraestructuras estables
+
 -Integrar servicios ejecutandose en nodos distintos
 
 # Descripción
