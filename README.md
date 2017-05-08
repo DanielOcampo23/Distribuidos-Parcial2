@@ -136,7 +136,7 @@ Después realizamos lo mismo con las demas web (web2 y web3) para poder tener la
 
 Las carpetas de la actividad con sus respectivos archivos deberia ser algo como:
 
-![Github Logo0](tree-parcial2.png)
+![Github Logo0](Imagenes/tree-parcial2.png)
 
 #  Ejecución
 
