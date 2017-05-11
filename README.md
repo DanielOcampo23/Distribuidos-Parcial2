@@ -31,7 +31,7 @@ Deberá realizar el aprovisionamiento de un ambiente compuesto por los siguiente
  
  -Nginx
  
- -html (para probar las páginas web)
+ -Html (para probar las páginas web)
  
 # Procedimiento
 
@@ -61,9 +61,9 @@ En este Dockerfile se hace los respectivos pasos para poder garantizar su instal
 http {
     sendfile on;
     upstream app_servers {
-        server web1:80;
-        server web2:80;
-        server web3:80;
+        server web1;
+        server web2;
+        server web3;
     } 
     server {
         listen 80;
@@ -79,38 +79,44 @@ http {
 }
 ```
 
-En este archivo configuramos cuales son las web que el ngnix balanceará y los puertos en los que va a escuchar el nginx.
+En este archivo configuramos cuales son las web que el ngnix balanceará sin necesidad de especificar el puerto 80 ya que el nginx escucha por el puerto 80, por esta razón no hay necesidad de volverlo a describir.
 
 #  Docker-compose.yml
 
 Después de configurar el dockerfile del nginx, pasamos a configurar el docker-compose.yml el cual es el encargado de montar toda las infraestructura mostrada en el diagrama de deployment anteriormente, este docker-compose debería quedar así con sus respectivas web:
 
 ```
-version: '2'
+version: '2' 
 services:
   web1:
     build: ./web1
-    expose: 
-      - "5000"
+    volumes:
+    - dataWeb1:/usr/local/apache2/htdocs
   web2:
     build: ./web2
-    expose:
-      - "5000"
+    volumes:
+    - dataWeb2:/usr/local/apache2/htdocs
   web3:
     build: ./web3
-    expose:
-      - "5000" 
+    volumes:
+    - dataWeb3:/usr/local/apache2/htdocs
   proxy:
-    build: ./nginx 
-    ports: 
-      - "8080:80"
-    links:
-      - web1
-      - web2
-      - web3
+    build: ./nginx
+    ports:
+    - "8080:80"
+    volumes:
+    - volNgin:/etc/nginx/volNgin
+    
+volumes:
+
+    dataWeb1:
+    dataWeb2:
+    dataWeb3:
+    volNgin:
 ```           
 
-En este docker-compose configuramos los servicios, osea las web que va a balancear el nginx con su respectivo puerto que expone cada web, después se configura el proxy (nginx) en el cual se le indica la carpeta en donde esta su respectivo Dockerfile y nginx.config que configuramos en anteriormente, después de esto se describe los puertos del nginx y después se lista las web que balaceará 
+En este docker-compose configuramos los servicios, osea las web que va a balancear el nginx y su respectivo volumen en donde se almacenará, después se configura el proxy (nginx) en el cual se le indica la carpeta en donde esta su respectivo Dockerfile y nginx.config que configuramos en anteriormente, después de esto se describe los puertos del nginx y su volumen.
+Por ultimo se mencionan todos los volumenes descritos en todo el docker-compose en el "volumes". Tener cuidado con la identación del último "volumes", por que se pueden producir errores al creer que el "volumes" pertenece a un servicio y no a la descripción de todos los volumenes del archivo.
 
 #  Configuración de las carpetas con sus archivos de las web
 
@@ -154,8 +160,26 @@ Prueba de funcionamiento:
 
 ![Github Logo0](Imagenes/parcial2.gif)
 
+## Cambios en el contenedor
+
+Por último, es pertinente explicar de manera adecuada como realizar cambios en los archivos y poder hacer aplicar los cambios ya que con solamente bajar el Docker no se efecuarán, para esto es necesario eliminar todas las imagenes de esta manera:
+
+```
+docker rm $(docker ps -a -q) -f
+```
+Después ejecutamos 
+```
+docker-compose build
+```
+Para poder que lea el Dockerfile con sus nuevos cambios 
+Por ultimo ejecutamos nuestro 
+```
+docker-compose up
+```
+
 #  Problematica
 
 Durante la realización de este ejercicio se presentaron una serie de problemas que con el tiempo se fueron solucionando, algunas fueron:
 
--Problema con los volúmenes de Docker: primero tenia pensado abordar el problema con volúmenes, pero después de presentar una serie de problemas con esto, investigué si de verdad eran necesario estos volúmenes, y como era de esperarse no fue necesario utilizarlos, por lo que la solución de este problema no aborda volúmenes.
+-Aplicar los cambios realizados en el Dockerfile o en cualquier otro archivo, la solución de este problema lo describo anteriomente en "Cambios en el contenedor"
+-Otro problema dificil de encontrar fue, la importacia de la identación del archivo docker-compose.yml, ya que si no identamos de manera correcta las etiquetas descritas en este archivo, el sistema puede interpretarlo de otra manera. 
